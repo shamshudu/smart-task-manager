@@ -1,25 +1,63 @@
 Smart Task Planner
 
-Smart Task Planner is a modern task management application that leverages AI to help users break down their goals into actionable subtasks. Built with Node.js, Express, and OpenAI GPT API, this project provides an intelligent backend service for creating, organizing, and tracking tasks.
+Objective:
+Smart Task Planner helps users transform broad goals into clear, actionable tasks with timelines and dependencies — powered by AI reasoning using the OpenAI GPT model.
 
-Features
+What It Does
 
-AI-Powered Task Breakdown: Users can create a task with a title and description, and the system automatically generates subtasks using OpenAI’s GPT model.
+This app takes a goal description (e.g., “Launch a website in 2 weeks”) and automatically breaks it into:
 
-Task Management: Users can view all tasks, along with their subtasks and current status.
+Subtasks with titles and descriptions
 
-Simple API: Provides endpoints to create new tasks (POST /tasks) and fetch all tasks (GET /tasks).
+Estimated timelines for each subtask
 
-Persistent Storage Ready: Currently, tasks are stored in memory, but the system can easily be integrated with a database for permanent storage.
+Defined dependencies between tasks
 
-Environment Variable Security: Sensitive keys like the OpenAI API key are securely stored in .env and not committed to GitHub.
+Example Output:
 
-Technologies Used
+1. Define Website Requirements – 3 days
+2. Create Wireframes – 5 days (depends on #1)
+3. Build and Test Website – 7 days (depends on #2)
+4. Launch Website – 1 day (depends on #3)
 
-Node.js & Express: For building the server and API endpoints.
+Technical Overview
 
-OpenAI GPT API: To generate subtasks intelligently based on user input.
+Backend: Node.js + Express
+AI Model: OpenAI GPT (via API)
+Route: /tasks
+Environment Variables:
+Create a .env file and add:
 
-JavaScript (ES6 Modules): Modern syntax for better maintainability.
+OPENAI_API_KEY=your_api_key_here
+PORT=5001
 
-Git & GitHub: Version control and remote repository management.
+
+Run Server:
+
+npm install
+node server.js
+
+
+Test API (example):
+
+curl -X POST http://localhost:5001/tasks \
+-H "Content-Type: application/json" \
+-d '{"title": "Launch new website", "description": "Build and deploy within 2 weeks"}'
+
+Future Scope
+
+Add a frontend to visualize task timelines
+
+Store user plans in a database
+
+Integrate a progress tracker and reminder system
+
+Deliverables
+
+GitHub repository with backend code
+
+README (this file)
+
+Working API that demonstrates AI-based task breakdown
+
+Smart Task Planner — helping users turn their goals into structured, achievable plans.
